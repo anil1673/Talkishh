@@ -1,0 +1,37 @@
+
+.friend{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.friend .profile{
+    display: flex;
+    align-items: center;
+}
+.friend .imgBox{
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+}
+.friend .imgBox img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+.friend p{
+    font-size: 14px;
+    margin-left: 10px;
+
+
+}
+.friend .friendSign{
+    position: relative;
+    float: right;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: red;
+}

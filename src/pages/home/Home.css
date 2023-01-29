@@ -1,0 +1,145 @@
+
+
+.homeContainer{
+    width: 100%;
+    background-color:var(--first) ;
+    height: 100%;
+
+}
+
+.display{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    position: sticky;
+    left: 0;
+    top:100px;
+    width: 30%;
+    height: 100%;
+    margin: 15px;
+    border-radius:5px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle{
+    width: 40%;
+    padding: 5px;
+    margin: 15px;
+    border-radius:5px ;
+    position: relative;
+}
+.caption{
+    width: 100%;
+    overflow: hidden;
+    height:30px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    padding: 5px;
+}
+.postAdd{
+    position: absolute;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    top: 0;
+    left: 0;
+    width: calc(100% - 10px);
+    height: calc(100px - 10px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    color: grey;
+    background-color: var(--second);
+    border-radius: 10px;
+}
+
+.postAdd .img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--third);
+}
+
+.postAdd .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.postAdd .fieldSide{
+    width: calc(100% - 150px);
+    background-color:var(--third);
+    border-radius: 10px;
+    height: 80px;
+}
+
+.postContainer{
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    top: 100px;
+    
+}
+.fieldSide input{
+    background-color: transparent;
+}
+.file{
+    display: none;
+}
+label{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: gray;
+}
+
+.postAdd button{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius:50% ;
+    background-color: var(--third);
+    color: var(--darkText);
+    cursor: pointer;
+} 
+
+.right{
+    /* position: sticky;
+    right: 0;
+    top: 100px; */
+    padding: 5px;
+    width: 20%;
+    padding: 5px;
+    background-color: var(--first);
+    margin: 15px;
+    border-radius:5px ;
+}
+
+@media screen and (max-width: 700px) {
+    .left {
+      display: none;
+    }
+    .right{display: none;}
+    .middle{
+        width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1000px ) and (  min-width:700px) {
+    .left{
+        display: none;
+    }
+
+    .middle{
+        width: 70%;
+    }
+  }

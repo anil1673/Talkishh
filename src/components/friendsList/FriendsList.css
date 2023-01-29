@@ -1,0 +1,24 @@
+.box{
+    background-color: var(--second);
+    border-radius: 10px;
+    padding: 10px;
+
+}
+.box h5{
+    padding: 10px 0;
+    font-size: 17px;
+}
+.box input{
+    border: 0;
+    outline:none;
+    padding: 8px 5px;
+    background-color: var(--third);
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.friends{
+    height: 300px;
+
+}
