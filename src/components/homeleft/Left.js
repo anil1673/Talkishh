@@ -17,6 +17,8 @@ import axios, { all } from "axios"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from 'react-router-dom'
 import { setUserSuggestions,setUserFollowers,setUserFollowings } from '../../redux';
+const LINK=process.env.LINK;
+
 
 
 
@@ -82,7 +84,7 @@ const Left = () => {
         <ul>
             <li>
                 <div className='leftImgUser'>
-                    <img src={`https://talkishh-api.onrender.com/public/assets/${user.picturePath}`} alt="" />
+                    <img src={`${LINK}/public/assets/${user.picturePath}`} alt="" />
                 </div>
                 <h5 style={{textTransform:"capitalize"}}>{user.name}</h5>
             </li>

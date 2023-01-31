@@ -14,6 +14,7 @@ import defaultuser from '../../defaultUser/defaultuser.png'
 import { useDispatch, useSelector } from 'react-redux';
 import logo from "../Images/logo.png"
 import { setLogout } from '../../redux';
+const LINK=process.env.LINK;
 
 
 const Navbar=()=> {
@@ -79,7 +80,7 @@ const Navbar=()=> {
                     
                     <NavLink to="/about">
                       <div  className='photoContainer'>
-                                <img src={user.picturePath===""?defaultuser:`https://talkishh-api.onrender.com/public/assets/${user.user.picturePath}`} className="ProfileImage" alt="" />
+                                <img src={user.picturePath===""?defaultuser:`${LINK}/public/assets/${user.user.picturePath}`} className="ProfileImage" alt="" />
                                 {/* <img src={defaultuser} className="ProfileImage"/> */}
                       </div>
                     </NavLink>

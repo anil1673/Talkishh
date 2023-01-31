@@ -14,6 +14,7 @@ import { padding } from '@mui/system';
 import { setPost, setPosts } from '../../redux';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment'
+const LINK=process.env.LINK;
 
 
 const Post = ({
@@ -61,7 +62,7 @@ const Post = ({
         <div className="post">
             <div className='userInfo'>
                 <div className="img">
-                    <img src={userPicturePath==""?defaultuser:`https://talkishh-api.onrender.com/public/assets/${userPicturePath}`} alt="" />
+                    <img src={userPicturePath==""?defaultuser:`${LINK}/public/assets/${userPicturePath}`} alt="" />
                 </div>
                 
                 <div className='user'>
@@ -76,7 +77,7 @@ const Post = ({
 
             </div>
             <div className="content">
-                <img src={picturePath==""?"":`https://talkishh-api.onrender.com/public/assets/${picturePath}`} alt="post image" />
+                <img src={picturePath==""?"":`${LINK}/public/assets/${picturePath}`} alt="post image" />
             </div>
 
             <div className="react">
@@ -99,7 +100,7 @@ const Post = ({
                                    <> 
                                    
                                      <div className="commentBox" style={{margin:"8px 0"}}>
-                                         <div className="img"><img src={cmt.commenterId.profileImage==""?defaultuser:`https://talkishh-api.onrender.com/${cmt.commenterId.profileImage}`} alt="" /></div>
+                                         <div className="img"><img src={cmt.commenterId.profileImage==""?defaultuser:`${LINK}/${cmt.commenterId.profileImage}`} alt="" /></div>
                                          <div className="cmtDisp">
                                              <h5 className="commenter" >{cmt.commenterId.name}</h5>
                                              <span className="comment" style={{fontSize:"14px"}}>{cmt.text}</span>

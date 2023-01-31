@@ -11,6 +11,7 @@ import "./Home.css"
 import { setPosts } from '../../redux/index.js';
 import PostHolder from '../../components/postHolder/PostHolder.js';
 import FriendsList from '../../components/friendsList/FriendsList.jsx';
+const LINK=process.env.LINK;
 
 const postData = { caption: "", image: "" };
 
@@ -56,7 +57,7 @@ const Home = () => {
 
             <form className="postAdd" onSubmit={handleSubmit} encType='multipart/form-data'>
               <div className="img">
-                <img src={`https://talkishh-api.onrender.com/public/assets/${user.picturePath}`} />
+                <img src={`${LINK}/public/assets/${user.picturePath}`} />
               </div>
 
               <div className="fieldSide">
