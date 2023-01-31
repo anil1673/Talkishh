@@ -19,6 +19,8 @@ import {useNavigate} from 'react-router-dom'
 import { setUserSuggestions,setUserFollowers,setUserFollowings } from '../../redux';
 
 
+
+
 const Left = () => {
     const [showFriend,setShowFriend]=useState(false);
     const [friendBox,setFriendBox]=useState(1);
@@ -80,7 +82,7 @@ const Left = () => {
         <ul>
             <li>
                 <div className='leftImgUser'>
-                    <img src={`http://localhost:5000/public/assets/${user.picturePath}`} alt="" />
+                    <img src={`https://talkishh-api.onrender.com/public/assets/${user.picturePath}`} alt="" />
                 </div>
                 <h5 style={{textTransform:"capitalize"}}>{user.name}</h5>
             </li>

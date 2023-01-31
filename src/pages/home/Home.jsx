@@ -56,7 +56,7 @@ const Home = () => {
 
             <form className="postAdd" onSubmit={handleSubmit} encType='multipart/form-data'>
               <div className="img">
-                <img src={`http://localhost:5000/public/assets/${user.picturePath}`} />
+                <img src={`https://talkishh-api.onrender.com/public/assets/${user.picturePath}`} />
               </div>
 
               <div className="fieldSide">

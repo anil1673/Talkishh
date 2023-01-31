@@ -79,7 +79,7 @@ const Navbar=()=> {
                     
                     <NavLink to="/about">
                       <div  className='photoContainer'>
-                                <img src={user.picturePath===""?defaultuser:`http://localhost:5000/public/assets/${user.user.picturePath}`} className="ProfileImage" alt="" />
+                                <img src={user.picturePath===""?defaultuser:`https://talkishh-api.onrender.com/public/assets/${user.user.picturePath}`} className="ProfileImage" alt="" />
                                 {/* <img src={defaultuser} className="ProfileImage"/> */}
                       </div>
                     </NavLink>
