@@ -8,42 +8,68 @@ import { registerFormValidation } from '../../validation';
 import Dropzone from "react-dropzone"
 import ImageIcon from '@mui/icons-material/Image';
 import registerImgg from "../../components/Images/registerImgg.png"
+import { useEffect } from 'react';
 require("./register.css");
+const LINK=process.env.REACT_APP_LINK;
 
 const registerData={
     firstName:"",lastName:"",email:"",password:"",location:"",occupation:"",picturePath:""
 }
 
 const Register = () => {
+  const [url,setUrl]=useState("");
+
+
+    
+
     const user=useSelector((state)=>state.user);
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const data=new FormData();
+    const registerFormData=new FormData();
 
     const {values,errors,handleBlur,handleChange,handleSubmit,setFieldValue}=useFormik({
         initialValues:registerData,
         validationSchema:registerFormValidation,
         onSubmit:async(values,errors)=>{
+        const {picturePath}=values;
+        data.append("file",values.picturePath);
+        data.append("upload_preset","talkkish");
+        data.append("cloud_name","dancvkguq")
 
-            console.log(values)
-            const {picturePath}=values;
+        fetch("https://api.cloudinary.com/v1_1/dancvkguq/image/upload",{
+          method:"POST",
+          body:data
+        }).then((res)=>res.json()).then(async(data)=>{
+        console.log(data)  ;
+        registerFormData.append("firstName",values.firstName);
+        registerFormData.append("lastName",values.lastName);
+        registerFormData.append("email",values.email);
+        registerFormData.append("password",values.password);
+        registerFormData.append("location",values.location);
+        registerFormData.append("occupation",values.occupation);
+        registerFormData.append("imgUrl",data.url)
+        console.log(values)
+        
+        if(data.url){
+          await axios.post( `${LINK}/auth/register`,registerFormData).then((res)=>{
+            console.log(res.data)
+              navigate("/");
+          }).catch((error)=>{
+            console.log("register error",error)
+          })
+        }else{
+          console.log(url)
+        }
+        }).catch((err)=>{
+          console.log(err)
+        });
+
+        
        
-        data.append("firstName",values.firstName);
-        data.append("lastName",values.lastName);
-        data.append("email",values.email);
-        data.append("password",values.password);
-        data.append("location",values.location);
-        data.append("occupation",values.occupation);
-        data.append("picturePath",values.picturePath);
-       
-
-
-        await axios.post("/auth/register",data).then((res)=>{
-          console.log(res.data)
-            navigate("/");
-        }).catch((error)=>{
-          console.log("register error")
-        })
+        
+        
+      
         }
     })
 

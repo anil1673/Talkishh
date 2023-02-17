@@ -14,7 +14,7 @@ import { padding } from '@mui/system';
 import { setPost, setPosts } from '../../redux';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment'
-const LINK=process.env.LINK;
+const LINK=process.env.REACT_APP_LINK;
 
 
 const Post = ({
@@ -62,7 +62,7 @@ const Post = ({
         <div className="post">
             <div className='userInfo'>
                 <div className="img">
-                    <img src={userPicturePath==""?defaultuser:`${LINK}/public/assets/${userPicturePath}`} alt="" />
+                    <img src={`${userPicturePath}`} alt="" />
                 </div>
                 
                 <div className='user'>
@@ -77,7 +77,7 @@ const Post = ({
 
             </div>
             <div className="content">
-                <img src={picturePath==""?"":`${LINK}/public/assets/${picturePath}`} alt="post image" />
+                <img src={`${picturePath}`} alt="post image" />
             </div>
 
             <div className="react">

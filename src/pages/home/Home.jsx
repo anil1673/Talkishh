@@ -11,7 +11,7 @@ import "./Home.css"
 import { setPosts } from '../../redux/index.js';
 import PostHolder from '../../components/postHolder/PostHolder.js';
 import FriendsList from '../../components/friendsList/FriendsList.jsx';
-const LINK=process.env.LINK;
+const LINK=process.env.REACT_APP_LINK;
 
 const postData = { caption: "", image: "" };
 
@@ -19,6 +19,7 @@ const Home = () => {
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token)
   const data = new FormData();
+const registerFormData=new FormData();
   const dispatch = useDispatch();
 
   const { values, errors, handleChange, handleSubmit, handelBlur, setFieldValue } = useFormik({
@@ -26,22 +27,41 @@ const Home = () => {
     onSubmit: async (values, errors) => {
       console.log(values.image)
 
-      data.append("caption", values.caption);
-      data.append("image", values.image);
-      data.append("userId", user._id)
+      
 
-      await axios.post("/post/posts", data, { headers: { Authorization: "Bearer " + token } }).then((res) => {
-        values.caption = '';
-        values.image = ''
-        console.log("111", res.data)
-        const p = res.data;
-        dispatch(setPosts({ posts: p }));
+        data.append("file",values.image);
+        data.append("upload_preset","talkkish");
+        data.append("cloud_name","dancvkguq")
 
+        fetch("https://api.cloudinary.com/v1_1/dancvkguq/image/upload",{
+          method:"POST",
+          body:data
+        }).then((res)=>res.json()).then(async(data)=>{
+        console.log(data)  ;
+        registerFormData.append("caption", values.caption);
+        registerFormData.append("image", data.url);
+        registerFormData.append("userId", user._id)
+        console.log(values)
+        
+        if(data.url){
+          await axios.post( `${LINK}/post/posts`,registerFormData, { headers: { Authorization: "Bearer " + token } }).then((res)=>{
+            console.log(res.data)
+            values.caption = '';
+            values.image = ''
+            console.log("111", res.data)
+            const p = res.data;
+            dispatch(setPosts({ posts: p }));
+          }).catch((error)=>{
+            console.log("post add error",error)
+          })
+        }else{
+          console.log(data.url)
+        }
+        }).catch((err)=>{
+          console.log(err)
+        });
 
-      }).catch((error) => {
-        console.log("post add error")
-
-      })
+      
 
     }
   })
@@ -57,7 +77,7 @@ const Home = () => {
 
             <form className="postAdd" onSubmit={handleSubmit} encType='multipart/form-data'>
               <div className="img">
-                <img src={`${LINK}/public/assets/${user.picturePath}`} />
+                <img src={`${user.picturePath}`} />
               </div>
 
               <div className="fieldSide">

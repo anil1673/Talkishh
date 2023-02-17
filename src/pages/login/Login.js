@@ -8,6 +8,7 @@ import {useFormik} from "formik"
 import { loginFormValidation } from '../../validation';
 import loginImg from "../../components/Images/loginImg.png"
 require("./login.css");
+const LINK=process.env.REACT_APP_LINK;
 
 const loginData={email:"",password:""}
 
@@ -22,19 +23,18 @@ const Login = () => {
         initialValues:loginData,
         validationSchema:loginFormValidation,
         onSubmit:async(values)=>{
-            await axios.post("/auth/login",values).then((res)=>{
+            await axios.post(`${LINK}/auth/login`,values).then((res)=>{
                 dispatch(setLogin({
                     user:res.data.user,
                     token:res.data.token
                 }));
-                navigate("/home")
+                navigate("/home");
             }).catch((err)=>{
                 console.log(err.response.data.type)
                 switch(err.response.data.type){
                     case 1:
                         return setEmailWrong(true);
                     case 2:
-                        
                         return setPassWrong(true);
                     default:
                         return null;

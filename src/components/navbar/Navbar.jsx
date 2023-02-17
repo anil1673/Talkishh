@@ -14,7 +14,8 @@ import defaultuser from '../../defaultUser/defaultuser.png'
 import { useDispatch, useSelector } from 'react-redux';
 import logo from "../Images/logo.png"
 import { setLogout } from '../../redux';
-const LINK=process.env.LINK;
+const LINK=process.env.REACT_APP_LINK;
+console.log(LINK)
 
 
 const Navbar=()=> {
@@ -80,7 +81,7 @@ const Navbar=()=> {
                     
                     <NavLink to="/about">
                       <div  className='photoContainer'>
-                                <img src={user.picturePath===""?defaultuser:`${LINK}/public/assets/${user.user.picturePath}`} className="ProfileImage" alt="" />
+                                <img src={`${user.user.picturePath}`} className="ProfileImage" alt="" />
                                 {/* <img src={defaultuser} className="ProfileImage"/> */}
                       </div>
                     </NavLink>

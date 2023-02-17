@@ -17,7 +17,11 @@ import axios, { all } from "axios"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from 'react-router-dom'
 import { setUserSuggestions,setUserFollowers,setUserFollowings } from '../../redux';
-const LINK=process.env.LINK;
+const LINK=process.env.REACT_APP_LINK;
+
+
+
+
 
 
 
@@ -75,6 +79,7 @@ const Left = () => {
 
     useEffect(()=>{
         getAllSuggestion();
+        console.log(LINK)
     })
   
 
@@ -84,7 +89,7 @@ const Left = () => {
         <ul>
             <li>
                 <div className='leftImgUser'>
-                    <img src={`${LINK}/public/assets/${user.picturePath}`} alt="" />
+                    <img src={`${user.picturePath}`} alt="" />
                 </div>
                 <h5 style={{textTransform:"capitalize"}}>{user.name}</h5>
             </li>
